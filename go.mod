@@ -54,3 +54,5 @@ require (
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )
+
+replace github.com/versent/saml2aws/v2 => github.com/gngj/saml2aws/v2 v2.34.16
