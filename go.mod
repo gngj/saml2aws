@@ -1,4 +1,4 @@
-module github.com/versent/saml2aws/v2
+module github.com/gngj/saml2aws
 
 go 1.17
 
