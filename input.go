@@ -5,10 +5,10 @@ import (
 	"log"
 	"sort"
 
+	"github.com/gngj/saml2aws/v2/pkg/cfg"
+	"github.com/gngj/saml2aws/v2/pkg/creds"
+	"github.com/gngj/saml2aws/v2/pkg/prompter"
 	"github.com/pkg/errors"
-	"github.com/versent/saml2aws/v2/pkg/cfg"
-	"github.com/versent/saml2aws/v2/pkg/creds"
-	"github.com/versent/saml2aws/v2/pkg/prompter"
 )
 
 // PromptForConfigurationDetails prompt the user to present their hostname, username and mfa

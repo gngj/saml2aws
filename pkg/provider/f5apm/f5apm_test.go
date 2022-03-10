@@ -10,9 +10,9 @@ import (
 	"testing"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/versent/saml2aws/v2/pkg/creds"
+	"github.com/gngj/saml2aws/v2/pkg/creds"
 
-	"github.com/versent/saml2aws/v2/pkg/provider"
+	"github.com/gngj/saml2aws/v2/pkg/provider"
 
 	"github.com/stretchr/testify/require"
 )

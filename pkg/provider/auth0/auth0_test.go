@@ -8,9 +8,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/versent/saml2aws/v2/pkg/cfg"
-	"github.com/versent/saml2aws/v2/pkg/creds"
-	"github.com/versent/saml2aws/v2/pkg/provider"
+	"github.com/gngj/saml2aws/v2/pkg/cfg"
+	"github.com/gngj/saml2aws/v2/pkg/creds"
+	"github.com/gngj/saml2aws/v2/pkg/provider"
 )
 
 const testSAMLFormHTMLFmt = `<html><head><title>test</title></head><body>

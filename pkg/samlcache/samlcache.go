@@ -10,10 +10,10 @@ import (
 	"runtime"
 	"time"
 
+	saml2aws "github.com/gngj/saml2aws/v2"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	saml2aws "github.com/versent/saml2aws/v2"
 )
 
 var (

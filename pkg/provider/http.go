@@ -11,11 +11,11 @@ import (
 	"time"
 
 	"github.com/avast/retry-go"
+	"github.com/gngj/saml2aws/v2/pkg/cfg"
+	"github.com/gngj/saml2aws/v2/pkg/cookiejar"
+	"github.com/gngj/saml2aws/v2/pkg/dump"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"github.com/versent/saml2aws/v2/pkg/cfg"
-	"github.com/versent/saml2aws/v2/pkg/cookiejar"
-	"github.com/versent/saml2aws/v2/pkg/dump"
 	"golang.org/x/net/publicsuffix"
 )
 

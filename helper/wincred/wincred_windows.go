@@ -27,7 +27,7 @@ import (
 	"strings"
 
 	winc "github.com/danieljoos/wincred"
-	"github.com/versent/saml2aws/v2/helper/credentials"
+	"github.com/gngj/saml2aws/v2/helper/credentials"
 )
 
 // Wincred handles secrets using the Windows credential service.

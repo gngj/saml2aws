@@ -14,11 +14,11 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/gngj/saml2aws/v2/pkg/cfg"
+	"github.com/gngj/saml2aws/v2/pkg/creds"
+	"github.com/gngj/saml2aws/v2/pkg/prompter"
+	"github.com/gngj/saml2aws/v2/pkg/provider"
 	"github.com/pkg/errors"
-	"github.com/versent/saml2aws/v2/pkg/cfg"
-	"github.com/versent/saml2aws/v2/pkg/creds"
-	"github.com/versent/saml2aws/v2/pkg/prompter"
-	"github.com/versent/saml2aws/v2/pkg/provider"
 	"golang.org/x/net/html"
 )
 
@@ -667,7 +667,7 @@ func (ac *Client) Authenticate(loginDetails *creds.LoginDetails) (string, error)
 	loginValues.Set("passwd", loginDetails.Password)
 
 	// Sometimes AAD response may contain "post url" as a relative url
-	// in this case, prepend the url scheme and host, of the URL we requested
+	// in this case, prepend the url scheme and hosaml2awsst, of the URL we requested
 	var urlPost string
 	if strings.HasPrefix(startSAMLResp.URLPost, "/") {
 		urlPost = res.Request.URL.Scheme + "://" + res.Request.URL.Host + startSAMLResp.URLPost
