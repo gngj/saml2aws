@@ -1,4 +1,4 @@
-module github.com/gngj/saml2aws
+module github.com/gngj/saml2aws/v2
 
 go 1.17
 
