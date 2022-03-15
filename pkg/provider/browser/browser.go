@@ -37,11 +37,13 @@ func (cl *Client) Authenticate(loginDetails *creds.LoginDetails) (string, error)
 	//
 	// this is a sandboxed browser window so password managers and addons are separate
 	var browser playwright.BrowserContext
+	var slowMo float64 = 10
 
 	if cl.persistentDataDir != "" {
 		// TODO: provide some overrides for this window
 		launchOptions := playwright.BrowserTypeLaunchPersistentContextOptions{
 			Headless: playwright.Bool(false),
+			SlowMo:   &slowMo,
 		}
 
 		browser, err = pw.Chromium.LaunchPersistentContext(cl.persistentDataDir, launchOptions)
