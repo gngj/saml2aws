@@ -2,6 +2,7 @@ package browser
 
 import (
 	"errors"
+	"fmt"
 	"net/url"
 
 	"github.com/gngj/saml2aws/v2/pkg/cfg"
@@ -37,13 +38,11 @@ func (cl *Client) Authenticate(loginDetails *creds.LoginDetails) (string, error)
 	//
 	// this is a sandboxed browser window so password managers and addons are separate
 	var browser playwright.BrowserContext
-	var slowMo float64 = 10
 
 	if cl.persistentDataDir != "" {
 		// TODO: provide some overrides for this window
 		launchOptions := playwright.BrowserTypeLaunchPersistentContextOptions{
 			Headless: playwright.Bool(false),
-			SlowMo:   &slowMo,
 		}
 
 		browser, err = pw.Chromium.LaunchPersistentContext(cl.persistentDataDir, launchOptions)
@@ -72,11 +71,19 @@ func (cl *Client) Authenticate(loginDetails *creds.LoginDetails) (string, error)
 
 	logger.WithField("URL", loginDetails.URL).Info("opening browser")
 
-	if _, err := page.Goto(loginDetails.URL); err != nil {
-		return "", err
-	}
+	messages := make(chan playwright.Request)
 
-	r := page.WaitForRequest("https://signin.aws.amazon.com/saml")
+	browser.Route("https://signin.aws.amazon.com/saml", func(route playwright.Route, request playwright.Request) {
+		route.Continue()
+		messages <- request
+	})
+
+	content := fmt.Sprintf("window.location = \"%s\"", loginDetails.URL)
+	page.AddScriptTag(playwright.PageAddScriptTagOptions{
+		Content: &content,
+	})
+
+	r := <-messages
 	data, err := r.PostData()
 	if err != nil {
 		return "", err
